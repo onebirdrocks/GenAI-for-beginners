@@ -8,6 +8,7 @@ import torch
 import coremltools as ct
 import soundfile as sf
 from coremltools.models import MLModel
+import mlx_whisper
 
 
 import warnings
@@ -38,6 +39,21 @@ def load_audio(filepath):
     mel = mel.float()  
     return mel
 
+
+@measure_time
+def audio_to_text(audio_file):
+    result = model.transcribe(audio_file)
+    print("result in whisper:"+result["text"])
+    
+
+@measure_time
+def audio_to_text_mlx(audio_file):
+    result = mlx_whisper.transcribe(audio_file, path_or_hf_repo="mlx-community/whisper-large-v3-mlx")
+    #text = mlx_whisper.transcribe(audio_file)["text"]
+    print("result in mlx:"+result["text"])
+
+
+
 @measure_time
 def audio_to_text_coreml(audio_file):
 
@@ -45,31 +61,21 @@ def audio_to_text_coreml(audio_file):
     mel = load_audio(audio_file).unsqueeze(0)  # 添加批次维度
     # Convert Whisper model to TorchScript
     scripted_model = torch.jit.trace(model, mel)
-    # 将 TorchScript 模型转换为 Core ML 模型
+    # Convert TorchScript Model to Core ML Model
     #mlmodel = ct.convert(scripted_model, inputs=[ct.TensorType(name="input", shape=mel.shape)])
     mlmodel = ct.convert(scripted_model, inputs=[ct.TensorType(name="input", shape=mel.shape)])
     #mlmodel = ct.convert(scripted_model, inputs=[ct.TensorType(name="input", shape=mel.shape, dtype=mel.dtype)])
-    # 保存 Core ML 模型
     mlmodel.save("whisper.mlmodel")
-    # 加载 Core ML 模型
+    # Load Core ML Model
     coreml_model = MLModel("whisper.mlmodel")
-    # 将 Mel-spectrogram 转换为 NumPy 数组
+    # Convert Mel-spectrogram to NumPy Array
     input_data = mel.cpu().numpy()
     result = coreml_model.predict({"input": input_data})
     print(result)
 
 
-
-
-
-@measure_time
-def audio_to_text(audio_file):
-    result = model.transcribe(audio_file)
-    print(result["text"])
-    
-
-
 def main(audio_file):
+    audio_to_text_mlx(audio_file)
     audio_to_text(audio_file)
     audio_to_text_coreml(audio_file)
    

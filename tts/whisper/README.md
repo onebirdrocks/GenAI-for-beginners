@@ -1,11 +1,21 @@
+## Introduction
+This repository aims to demonstrate how to use Whisper for converting audio files into text. Additionally, it includes a performance comparison with Apple's MLX, which leverages Apple Silicon's GPU to achieve superior performance.
+
+
 ## Installration
 
-Wisper
+#### Wisper
 '''
 pip install -U openai-whisper
 '''
 
-ffmpeg
+#### MLX
+'''
+pip install mlx-whisper
+'''
+
+
+#### ffmpeg
 '''
 # on Ubuntu or Debian
 sudo apt update && sudo apt install ffmpeg

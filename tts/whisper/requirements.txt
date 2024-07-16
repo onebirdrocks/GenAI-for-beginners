@@ -4,3 +4,4 @@ coremltools
 whisper
 numpy
 soundfile
+mlx-whisper
