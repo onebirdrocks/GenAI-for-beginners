@@ -39,8 +39,8 @@ scoop install ffmpeg
 
 ## How to run
 ```
-python simple-demo.py llm_speech.mp3
-python simple-demo.py llm_speech_zh.mp3
+python whisper_demo.py llm_speech.mp3
+python whisper_demo.py llm_speech_zh.mp3
 ```
 
 
