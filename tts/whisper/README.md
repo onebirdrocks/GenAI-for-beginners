@@ -3,20 +3,23 @@ This repository aims to demonstrate how to use Whisper for converting audio file
 
 
 ## Installration
+```
+pip install -r requirements.txt
+```
 
 #### Wisper
-'''
+```
 pip install -U openai-whisper
-'''
+```
 
 #### MLX
-'''
+```
 pip install mlx-whisper
-'''
+```
 
 
 #### ffmpeg
-'''
+```
 # on Ubuntu or Debian
 sudo apt update && sudo apt install ffmpeg
 
@@ -31,23 +34,18 @@ choco install ffmpeg
 
 # on Windows using Scoop (https://scoop.sh/)
 scoop install ffmpeg
-'''
+```
 
 
 ## How to run
-'''
+```
 python simple-demo.py llm_speech.mp3
 python simple-demo.py llm_speech_zh.mp3
-'''
+```
 
 
 ## how to generate your audio
-'''
+```
 # need to call google service for gtts.
 python audio_gen.py
-'''
-
-
-
-pip install coremltools
-pip install torch coremltools whisper numpy soundfile
+```

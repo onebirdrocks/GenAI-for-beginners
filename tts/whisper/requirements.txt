@@ -5,3 +5,4 @@ whisper
 numpy
 soundfile
 mlx-whisper
+openai-whisper
