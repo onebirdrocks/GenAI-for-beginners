@@ -1,0 +1,6 @@
+torch
+tensorflow-macos
+coremltools
+whisper
+numpy
+soundfile

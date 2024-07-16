@@ -36,3 +36,8 @@ python simple-demo.py llm_speech_zh.mp3
 # need to call google service for gtts.
 python audio_gen.py
 '''
+
+
+
+pip install coremltools
+pip install torch coremltools whisper numpy soundfile

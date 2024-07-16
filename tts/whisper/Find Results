@@ -1,0 +1,36 @@
+Searching 3551 files for "Rachel"
+
+~/github/onebird-chat/frontend/src/components/Title.tsx:
+   31    return (
+   32      <div className="flex justify-between items-center w-full p-4 bg-gray-900 text-white font-bold shadow">
+   33:       <div className="italic">Rachel</div>
+   34        <button
+   35          onClick={resetConversation}
+
+~/github/onebird-chat/frontend/src/components/Controller.tsx:
+   43  
+   44              // Append to audio
+   45:             const rachelMessage = { sender: "rachel", blobUrl: audio.src };
+   46:             messagesArr.push(rachelMessage);
+   47              setMessages(messagesArr);
+   48  
+   ..
+   72                  className={
+   73                    "flex flex-col " +
+   74:                   (audio.sender == "rachel" && "flex items-end")
+   75                  }
+   76                >
+   ..
+   79                    <p
+   80                      className={
+   81:                       audio.sender == "rachel"
+   82                          ? "text-right mr-2 italic text-green-500"
+   83                          : "ml-2 italic text-blue-500"
+   ..
+  100            {messages.length == 0 && !isLoading && (
+  101              <div className="text-center font-light italic mt-10">
+  102:               Send Onebird a message...
+  103              </div>
+  104            )}
+
+7 matches across 2 files
